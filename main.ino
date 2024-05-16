@@ -3,7 +3,6 @@ const int analogIn = A0;
 int RawValue= 0;
 double Voltage = 0;
 double tempC = 0;
-double tempF = 0;
 
 void setup(){  
   Serial.begin(9600);
