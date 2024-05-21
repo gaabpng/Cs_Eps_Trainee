@@ -182,7 +182,7 @@ void noTone(uint8_t aPinNumber){
 
 #define IR_RECEIVE_PIN          15  // D15
 
-#define IR_SEND_PIN              13  // D4
+#define IR_SEND_PIN              15  // D4
 
 #define TONE_PIN                27  // D27 25 & 26 are DAC0 and 1
 #define APPLICATION_PIN         16  // RX2 pin
