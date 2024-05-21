@@ -1,6 +1,6 @@
 // NO TINKERCAD ESTÁ COMO ARDUINO UNO, MAS DEVE SER COMPILADO EM UM ARDUINO MEGA POR CONTA DO TAMANHO DOS HALLS INFRA VERMELHO
 
-#include "PinDefinitionsAndMore.h"
+// #include "PinDefinitionsAndMore.h"
 
 const int analogIn = A0;
 
@@ -9,6 +9,7 @@ double Voltage = 0;
 double tempC = 0;
 
 int TempoDoArCondicionado = 0;
+int TempoDoAquecedor = 0;
 
 void setup() {  
   Serial.begin(9600);
@@ -24,12 +25,29 @@ void loop() {
   Serial.println(tempC, 1); // 1 casa decimal
   Serial.println();
   
+  //controle Aquecedor
   if (tempC < 10) {
-    digitalWrite(2, HIGH);
+    TempoDoAquecedor++;
   } else {
     digitalWrite(2, LOW);
+    TempoDoAquecedor = 0;
+  }
+  
+  if (TempoDoAquecedor >= 120) {
+    digitalWrite(2, HIGH);
   }
 
+  if (TempoDoAquecedor == 360) {
+    if (tempC < 10) {
+      digitalWrite(2, HIGH);
+      TempoDoAquecedor = 121;
+    } else {
+      digitalWrite(2, LOW);
+      TempoDoAquecedor = 0;
+    }
+  }
+
+  //controle Ar Condicionado
   if (tempC > 30) {
     TempoDoArCondicionado += 1;
   }
@@ -45,5 +63,11 @@ void loop() {
     IrSender.sendRaw(rawData, sizeof(rawData) / sizeof(rawData[0]), NEC_KHZ); // Note the approach used to automatically calculate the size of the array.
   }
 
+  //debug
+  Serial.println("TempoDoArCondicionado: ");
+  Serial.println(TempoDoArCondicionado);
+  Serial.println();
+  Serial.println("TempoDoAquecedor: ");
+  Serial.println(TempoDoAquecedor);
   delay(1000);
 }
