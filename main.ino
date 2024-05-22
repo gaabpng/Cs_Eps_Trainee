@@ -1,6 +1,6 @@
 // NO TINKERCAD ESTÁ COMO ARDUINO UNO, MAS DEVE SER COMPILADO EM UM ARDUINO MEGA POR CONTA DO TAMANHO DOS HALLS INFRA VERMELHO
 
-// #include "PinDefinitionsAndMore.h"
+#include "PinDefinitionsAndMore.h"
 
 const int analogIn = A0;
 
