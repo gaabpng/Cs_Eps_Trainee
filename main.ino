@@ -33,14 +33,19 @@ void loop() {
     TempoDoAquecedor = 0;
   }
   
-  if (TempoDoAquecedor >= 120) {
+  if (TempoDoAquecedor == 120) {
     digitalWrite(2, HIGH);
+    TempoDoAquecedor == 360;
   }
 
-  if (TempoDoAquecedor == 360) {
+  if (TempoDoAquecedor > 120) {
+    TempoDoAquecedor += 1;
+  }
+
+  if (TempoDoAquecedor == 121) {
     if (tempC < 10) {
       digitalWrite(2, HIGH);
-      TempoDoAquecedor = 121;
+      TempoDoAquecedor = 360;
     } else {
       digitalWrite(2, LOW);
       TempoDoAquecedor = 0;
