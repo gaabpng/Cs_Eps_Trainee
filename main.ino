@@ -45,7 +45,7 @@ void loop() {
   // se o contador chegar a 120, o relé é ativado e o contador recebe o valor 360
   if (TempoDoAquecedor == 120) {
     digitalWrite(2, HIGH);
-    TempoDoAquecedor == 360;
+    TempoDoAquecedor == 10;
   }
 
   // se o contador é maior que 120, faz-se uma contagem regressiva
